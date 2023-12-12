@@ -13,7 +13,7 @@
         <input type="submit" value="Ojala te toque el jamon"></input>
     </form>
     <?php
-echo $_SERVER['DOCUMENT_ROOT'];
+// echo $_SERVER['DOCUMENT_ROOT'];
     use GuzzleHttp\Client;
 
     require_once 'vendor/autoload.php';
