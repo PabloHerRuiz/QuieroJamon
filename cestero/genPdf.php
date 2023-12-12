@@ -26,7 +26,7 @@ class GenPdf
             <dd>Optimismo</dd>
             <dd>Autoestima</dd>
             <dd>Trabajo en Equipo</dd>
-            <dd><img src="cestero/todos/jamon-iberico-bellota-.jpg" width="75px" height="75px"></dd>
+            <dd><img src="todos/jamon-iberico-bellota-.jpg" width="500px" height="500px"></dd>
             </dl>
             </body>
             </html>';
@@ -53,10 +53,9 @@ class GenPdf
         </html>';
 
         }
-        echo $_SERVER['DOCUMENT_ROOT']; // Añade esta línea
 
         $mipdf = new Dompdf();
-        $mipdf->getOptions()->setChroot($_SERVER['DOCUMENT_ROOT'].'\QuieroJamon\cestero\todos');
+        $mipdf->getOptions()->setChroot($_SERVER['DOCUMENT_ROOT']);
         # Definimos el tamaño y orientación del papel que queremos.
         # O por defecto cogerá el que está en el fichero de configuración.
         $mipdf->setpaper("A4", "portrait");
