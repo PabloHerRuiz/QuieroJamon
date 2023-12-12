@@ -15,6 +15,7 @@ try {
     $nombre = strtolower($_GET['nombre']);
 
     $stmt = $conn->query("SELECT correo,tipo_Cesta FROM empleados WHERE nombre='$nombre'");
+    
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $para = $row['correo'];
     $cesta = $row['tipo_Cesta'];

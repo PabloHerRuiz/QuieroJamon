@@ -10,5 +10,5 @@ CREATE TABLE cestaNavidad.empleados (
 INSERT INTO cestaNavidad.empleados (nombre, correo, tipo_Cesta) VALUES
 ('pablo','pherrui680@g.educaand.es', 'Jamon'),
 ('mengi','fmengut1409@g.educaand.es', 'Normal'),
-('marcos','mnavleo2312@g.educaand.es', 'Normal')
-('manolo','jve@ieslasfuentezuelas.coom','Jamon');
+('marcos','mnavleo2312@g.educaand.es', 'Normal'),
+('manolo','jve@ieslasfuentezuelas.com','Jamon');
