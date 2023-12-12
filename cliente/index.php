@@ -1,11 +1,35 @@
-<?php
-use GuzzleHttp\Client;
+<!DOCTYPE html>
+<html lang="en">
 
-require_once 'vendor/autoload.php';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-$client = new Client();
+<body>
+    <form method="POST">
+        <input type="text" name="nombre" id="nombre">
+        <input type="submit" value="Ojala te toque el jamon"></input>
+    </form>
+    <?php
 
-$response = $client->request('GET', 'http://cartero/apiCorreo.php');
+    use GuzzleHttp\Client;
 
-echo $response->getBody();
-?>
+    require_once 'vendor/autoload.php';
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (!empty($_POST["nombre"])) {
+            $nombre = $_POST["nombre"];
+            $client = new Client();
+            $response = $client->request('GET', 'http://cartero/apiCorreo.php?nombre=' . $nombre);
+            echo $response->getBody();
+        } else {
+            echo "No has introducido ningun nombre";
+        }
+    }
+
+    ?>
+</body>
+
+</html>

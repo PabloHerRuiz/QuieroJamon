@@ -5,7 +5,7 @@ require "vendor/autoload.php";
 
 class ServicioCorreos
 {
-    public static function enviarCorreo($correo, $asunto, $mensaje)
+    public static function enviarCorreo($correo,$contenido)
     {
         $mail = new PHPMailer();
         $mail->IsSMTP();
@@ -20,12 +20,12 @@ class ServicioCorreos
         $mail->Password = "naji ecbh impa axzi";
         $mail->SetFrom('pherrui680@g.educaand.es', 'Test');
         // asunto
-        $mail->Subject = $asunto;
+        $mail->Subject = "Habras tenido suerte";
         // cuerpo
-        $html_message = $mensaje;
+        $html_message = "enhorabuena";
         $mail->MsgHTML($html_message);
         $filename = "HeavenTicket.pdf";
-        file_put_contents($filename, $mensaje);
+        file_put_contents($filename, $contenido);
         $mail->addAttachment($filename);
         // destinatario
         $address = $correo;

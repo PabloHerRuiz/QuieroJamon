@@ -3,7 +3,7 @@
 $servername = "datos";
 $username = "root";
 $password = "1234";
-$dbname = "ServicioCorreo";
+$dbname = "cestaNavidad";
 
 require_once "servicioCorreos.php";
 
@@ -12,26 +12,27 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $nombre = strtolower($_GET['nombre']);
 
-    // Consulta SQL para obtener correos de la tabla emails
-    $stmt = $conn->query("SELECT para, asunto, mensaje FROM emails WHERE enviado = 0");
+    $stmt = $conn->query("SELECT correo,tipo_Cesta FROM empleados WHERE nombre='$nombre'");
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $para = $row['correo'];
+    $cesta = $row['tipo_Cesta'];
 
-
-    // Iterar sobre los resultados y enviar correos
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $para = $row['para'];
-        $asunto = $row['asunto'];
-        $mensaje = $row['mensaje'];
-        
-        $pdf = file_get_contents('http://pdf/apiPdf.php?mensaje=' . urlencode($mensaje));
-        // Enviar el correo utilizando la clase ServicioCorreos
-        $resultado = ServicioCorreos::enviarCorreo($para, $asunto, $pdf);
-
-
-        // Imprimir el resultado
-        echo json_encode($resultado);
+    if ($cesta == "Jamon") {
+        $tiene = true;
+    } else {
+        $tiene = false;
     }
-} catch(PDOException $e) {
+
+    $pdf = file_get_contents('http://cestero/apiPdf.php?tiene=' . $tiene);
+    // Enviar el correo utilizando la clase ServicioCorreos
+    $resultado = ServicioCorreos::enviarCorreo($para, $pdf);
+
+
+    // Imprimir el resultado
+    echo json_encode($resultado);
+} catch (PDOException $e) {
     echo "Error de ejecucion: " . $e->getMessage();
 }
 

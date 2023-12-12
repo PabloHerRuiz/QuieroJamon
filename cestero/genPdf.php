@@ -9,29 +9,29 @@ class GenPdf
     }
     public function genPdf($tiene)
     {
-        $html = '
-        <html>
-        <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>PREMIO</title>
-        </head>
-        <body>
-        
-        <h2>Ingredientes para aprobar DWES</h2>
-        <p>Ingredientes:</p>
-        <dl>
-        <dd>Perseverancia</dd>
-        <dd>Constancia</dd>
-        <dd>Optimismo</dd>
-        <dd>Autoestima</dd>
-        <dd>Trabajo en Equipo</dd>
-        <dd>Jamón Pata Negra</dd>
-        <dd><img src="todos/jamon-iberico-bellota-.jpg" width="75px" height="75px"></dd>
-        </dl>
-        </body>
-        </html>';
-
-        $ContenidoAlternativo = '
+        if ($tiene) {
+            $html = '
+            <html>
+            <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>PREMIO</title>
+            </head>
+            <body>
+            
+            <h2>ENHORABUENA</h2>
+            <p>Contenido:</p>
+            <dl>
+            <dd>Perseverancia</dd>
+            <dd>Constancia</dd>
+            <dd>Optimismo</dd>
+            <dd>Autoestima</dd>
+            <dd>Trabajo en Equipo</dd>
+            <dd><img src="cestero/todos/jamon-iberico-bellota-.jpg" width="75px" height="75px"></dd>
+            </dl>
+            </body>
+            </html>';
+        } else {
+            $html = '
         <html>
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -39,8 +39,8 @@ class GenPdf
         </head>
         <body>
         
-        <h2>Ingredientes para aprobar DWES</h2>
-        <p>Ingredientes:</p>
+        <h2>MALA SUERTE</h2>
+        <p>Contenido:</p>
         <dl>
         <dd>Perseverancia</dd>
         <dd>Constancia</dd>
@@ -52,8 +52,10 @@ class GenPdf
         </body>
         </html>';
 
+        }
 
         $mipdf = new Dompdf();
+        $mipdf->getOptions()->setChroot($_SERVER['DOCUMENT_ROOT'].'\QuieroJamon\cestero\todos');
         # Definimos el tamaño y orientación del papel que queremos.
         # O por defecto cogerá el que está en el fichero de configuración.
         $mipdf->setpaper("A4", "portrait");
