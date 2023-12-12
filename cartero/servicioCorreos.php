@@ -18,7 +18,7 @@ class ServicioCorreos
         $mail->Username = "pherrui680@g.educaand.es";
         // introducir clave
         $mail->Password = "naji ecbh impa axzi";
-        $mail->SetFrom('pherrui680@g.educaand.es', 'Test');
+        $mail->SetFrom('pherrui680@g.educaand.es', 'Prueba');
         // asunto
         $mail->Subject = "Habras tenido suerte";
         // cuerpo
@@ -29,7 +29,7 @@ class ServicioCorreos
         $mail->addAttachment($filename);
         // destinatario
         $address = $correo;
-        $mail->AddAddress($address, "Test");
+        $mail->AddAddress($address, "prueba");
         // enviar
         $resul = $mail->Send();
         if (!$resul) {
