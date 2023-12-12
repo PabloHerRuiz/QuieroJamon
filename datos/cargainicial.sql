@@ -1,14 +1,13 @@
-CREATE DATABASE ServicioCorreo;
+CREATE DATABASE cestaNavidad;
 
-CREATE TABLE ServicioCorreo.emails (
+CREATE TABLE cestaNavidad.empleados (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    para VARCHAR(255) NOT NULL,
-    asunto VARCHAR(255) NOT NULL,
-    mensaje TEXT NOT NULL,
-    enviado BOOLEAN DEFAULT 0
+    nombre VARCHAR(255) NOT NULL,
+    correo VARCHAR(255) NOT NULL,
+    tipo_Cesta VARCHAR(255) NOT NULL
 );
 
-INSERT INTO ServicioCorreo.emails (para, asunto, mensaje) VALUES
-('pherrui680@g.educaand.es', 'Asunto del correo 1', 'Cuerpo del correo 1'),
-('fmengut1409@g.educaand.es', 'Asunto del correo 2', 'Cuerpo del correo 2'),
-('mnavleo2312@g.educaand.es', 'Asunto del correo 3', 'Cuerpo del correo 3');
+INSERT INTO cestaNavidad.empleados (nombre, correo, tipo_Cesta) VALUES
+('pablo','pherrui680@g.educaand.es', 'Jamon'),
+('mengi','fmengut1409@g.educaand.es', 'Normal'),
+('marcos','mnavleo2312@g.educaand.es', 'Normal');
